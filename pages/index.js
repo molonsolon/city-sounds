@@ -53,12 +53,13 @@ export default function Home() {
           Find and support your local music stores and venues
         </p>
 
-        <form onSubmit={handleSubmit}>
+        <form className={styles.searchForm} onSubmit={handleSubmit}>
           <label>
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
+              className={styles.searchBar}
             />
           </label>
 
