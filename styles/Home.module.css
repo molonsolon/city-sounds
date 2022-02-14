@@ -1,8 +1,8 @@
 .container {
-	background: linear-gradient(-45deg, #5DFDCB, #90d6ffd0, #C9F9FF, #23d5ab);
-	background-size: 400% 400%;
+	background: linear-gradient(-45deg, #5dfdcae0, #90d6ffde, #C9F9FF, #23d5ab);
+	background-size: 500%;
+  height: 560vh;
 	animation: gradient 20s ease infinite;
-	height: 400%;
 }
 
 @keyframes gradient {
@@ -49,17 +49,26 @@
 
 .searchForm > button:focus {
   outline-style: none !important;
-  border: solid #FE6D73 1px;
-  box-shadow: 0 0 2px #FE6D73;
+  /* border: solid #FE6D73 1px;
+  box-shadow: 0 0 2px #FE6D73; */
 }
 
 .searchForm > button {
+  position: absolute;
   height: 4vh;
+  width: auto;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: -72px;
+  cursor:pointer ;
+  margin-top: 7px;
 
 }
 
 .title {
-  padding-top: 25vh;
+  padding-top: 20vh;
+  padding-bottom: 2vh;
   height: 4.5rem;
   width: 100%;
   display: flex;
@@ -69,16 +78,16 @@
   color: #2B2D42;
 }
 .searchBar {
-  width: 20vw;
-  height: 4vh;
+  width: 40vw;
+  height: 5vh;
   border-radius: 10px;
   border: solid rgba(128, 128, 128, 0.767) 1px;
   background-image:none;
   background-color:white;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
-  box-shadow: 0 1px rgba(128, 128, 128, 0.562);
-  padding: .5rem;
+  box-shadow: 0 1px 5px rgba(128, 128, 128, 0.562);
+  padding: .8rem;
 }
 
 .searchBar:focus {
@@ -89,13 +98,15 @@
 
 
 .places {
+  margin-right: -55vw;
   height: auto;
   width: auto;
   display: grid;
-  gap: 10px;
-  grid-auto-rows: auto;
+  column-gap: 60vw;
+  row-gap: 5vh;
+  grid-template-rows: repeat(20, auto);
   padding: 3rem;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 30vw 30vw 30vw 30vw;
   list-style-type: none;
 }
 .description {

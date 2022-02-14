@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import React, { useEffect, useState } from "react";
 import Place from "../components/Place";
+import SearchIcon from "../public/searchGlass.svg";
 
 const API_KEY = "u1Jom8qikw4A3dUo3uPxgm3fnRGb0tzy";
 
@@ -63,13 +64,26 @@ export default function Home() {
             />
           </label>
 
-          <button type="submit">submit</button>
+          <button type="submit">
+            <Image
+              src={SearchIcon}
+              alt="A rectangular magnifying glass that serves as a search button"
+              height="30px"
+            />
+          </button>
         </form>
         <ul className={styles.places}>
           {placeList &&
             placeList.map((place) => {
-
-              return <Place key={place.id} place={place.poi.name} address={place.address.freeformAddress} website={place.poi.url} id={place.id}/>;
+              return (
+                <Place
+                  key={place.id}
+                  place={place.poi.name}
+                  address={place.address.freeformAddress}
+                  website={place.poi.url}
+                  id={place.id}
+                />
+              );
             })}
         </ul>
 

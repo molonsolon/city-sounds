@@ -1,22 +1,26 @@
 .title {
-  font-size: 1rem;
-  
+  font-size: 2rem;
+  color: #2B2D42;
 }
 .article {
-  height: 20vh;
-  width: 30vw;
-  background: rgba(224, 81, 224, 0.226);
-
-  border: solid black 3px;
-  border-radius: 3px;
+  min-height: 30vh;
+  padding: 1.1rem;
+  width: 64vw;
+  background: #fdeaeaf1;
+  border: solid #2b2d424b 1px;
+  box-shadow: 0 1px 3px #2b2d42b2;
+  border-radius: 7px;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.photosContainer {
+.article > button {
+  margin-top: 1vh;
+}
+
+/* .photosContainer {
   height: 600px;
   width: auto;
-}
+} */
 

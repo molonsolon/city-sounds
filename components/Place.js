@@ -6,7 +6,8 @@ import Image from "next/image";
 const API_KEY = "u1Jom8qikw4A3dUo3uPxgm3fnRGb0tzy";
 
 export default function Place({ place, address, website, id }) {
-  const [photo, setPhoto] = useState();
+  // const [photo, setPhoto] = useState();
+  const [description, setDescription] = useState("");
 
   const getDetails = async () => {
     try {
@@ -15,14 +16,26 @@ export default function Place({ place, address, website, id }) {
         `https://api.tomtom.com/search/2/poiDetails.json?key=${API_KEY}&id=${id}`
       );
       const details = await res.json();
-      console.log(details.result.photos[0].id);
-      const res2 = await fetch(
-        `https://api.tomtom.com/search/2/poiPhoto?key=${API_KEY}&id=${details.result.photos[0].id}`
-      );
-      console.log(res2);
-      setPhoto(res2);
+      if (details.result.description) {
+        setDescription(details.result.description);
+      }
+      console.log(details);
+      // console.log(details.result.photos[0].id);
+      // const res2 = await fetch(
+      //   `https://api.tomtom.com/search/2/poiPhoto?key=${API_KEY}&id=${details.result.photos[0].id}`
+      // );
+      // console.log(res2);
+      // setPhoto(res2);
     } catch (e) {
       console.error(e);
+    }
+  };
+
+  const clickHandler = () => {
+    if (description === "") {
+      getDetails();
+    } else {
+      setDescription("");
     }
   };
 
@@ -35,7 +48,7 @@ export default function Place({ place, address, website, id }) {
           Website
         </a>
       )}
-      <button onClick={getDetails}>details</button>
+      <button onClick={clickHandler}>details</button>
       {/* <figure className="photosContainer">
         {photo && (
           <Image
@@ -47,6 +60,7 @@ export default function Place({ place, address, website, id }) {
           />
         )}
       </figure> */}
+      {description && <p>{description}</p>}
     </li>
   );
 }
