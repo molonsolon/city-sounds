@@ -1,0 +1,32 @@
+.navBar {
+  height: 6vh;
+  width: 100vw;
+  border-radius: 5px;
+  position: fixed;
+  background:#2b2d4252;
+  display: grid;
+  grid-template-rows: 6vh;
+  padding-right: 2rem;
+  grid-template-columns: repeat(2, 50%);
+  opacity: 75%;
+  align-items: center;
+  color: white;
+  flex-direction: row;
+  box-shadow: 0 0 6px #2b2d42d2;;
+}
+
+.logo {
+  padding-top: 1px;
+  align-self: center;
+  justify-self: left;
+  margin: 0;
+  padding-left: 2rem;
+  cursor: pointer;
+}
+
+.links {
+  display: flex;
+  gap: 20px;
+  justify-content: right;
+
+}

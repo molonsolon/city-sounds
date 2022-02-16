@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import styles from "../styles/Place.module.css";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const API_KEY = "u1Jom8qikw4A3dUo3uPxgm3fnRGb0tzy";
 
