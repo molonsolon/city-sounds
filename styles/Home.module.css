@@ -3,6 +3,7 @@
 	background-size: 500%;
   height: 560vh;
 	animation: gradient 20s ease infinite;
+  overflow-x: hidden;
 }
 
 @keyframes gradient {
@@ -98,7 +99,7 @@
 
 
 .places {
-  margin-right: -55vw;
+  margin-right: -235vw;
   height: auto;
   width: auto;
   display: grid;

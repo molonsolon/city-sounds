@@ -1,14 +1,24 @@
 .title {
   font-size: 2rem;
-  color: #2B2D42;
+  color: white;
+
 }
 .article {
   min-height: 30vh;
+  color: white;
   padding: 1.1rem;
   width: 64vw;
-  background: #fdeaeaf1;
+  background: hsla(358, 99%, 71%, 1);
+
+  background: linear-gradient(
+   40deg,
+    hsla(358, 99%, 71%, 1) 0%,
+    hsla(235, 21%, 21%, 1) 66%
+  );
+
+
   border: solid #2b2d424b 1px;
-  box-shadow: 0 1px 3px #2b2d42b2;
+  box-shadow: 0 2px 5px #2b2d42b2;
   border-radius: 7px;
   display: flex;
   align-items: center;
@@ -19,8 +29,9 @@
   margin-top: 1vh;
 }
 
+
+
 /* .photosContainer {
   height: 600px;
   width: auto;
 } */
-

@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 const API_KEY = "u1Jom8qikw4A3dUo3uPxgm3fnRGb0tzy";
 
 export default function Place({ place, address, website, id }) {
-  // const [photo, setPhoto] = useState();
   const [description, setDescription] = useState("");
 
   const getDetails = async () => {
@@ -21,12 +20,6 @@ export default function Place({ place, address, website, id }) {
         setDescription(details.result.description);
       }
       console.log(details);
-      // console.log(details.result.photos[0].id);
-      // const res2 = await fetch(
-      //   `https://api.tomtom.com/search/2/poiPhoto?key=${API_KEY}&id=${details.result.photos[0].id}`
-      // );
-      // console.log(res2);
-      // setPhoto(res2);
     } catch (e) {
       console.error(e);
     }
@@ -41,7 +34,16 @@ export default function Place({ place, address, website, id }) {
   };
 
   return (
-    <li className={styles.article}>
+    <motion.li
+      className={styles.article}
+      whileHover={{
+        scale: 1.05,
+        transition: {
+          ease: "easeInOut",
+          stiffness: 500,
+        },
+      }}
+    >
       <h3 className={styles.title}>{place}</h3>
       <p>{address}</p>
       {website && (
@@ -62,7 +64,7 @@ export default function Place({ place, address, website, id }) {
         )}
       </figure> */}
       {description && <p>{description}</p>}
-    </li>
+    </motion.li>
   );
 }
 

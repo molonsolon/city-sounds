@@ -5,16 +5,23 @@ import React, { useEffect, useState } from "react";
 import Place from "../components/Place";
 import SearchIcon from "../public/searchGlass.svg";
 const API_KEY = "u1Jom8qikw4A3dUo3uPxgm3fnRGb0tzy";
-
+import {AnimatePresence, motion} from 'framer-motion'
+ 
 export default function Home() {
   const [search, setSearch] = useState("");
   const [placeList, setPlaceList] = useState([]);
-  const [[page, direction], setPage] = useState([0, 0]);
+  const [page, setPage] = useState(0);
 
-  const paginate = (direction) => {
-    setPage([page + direection, direction]);
-  }
-  
+
+  // i  need to build a page function that will slide the places container
+  // to the left, resulting in the first column sliding off screen to the left.
+  // this will need to be triggered with buttons places on 
+  // the bottom of each column for navigating forwards and backwards
+  // through the pages. I will need to have a current page state in order to 
+  // properly control these pages (next and previous only present when applicable)
+  // 
+
+
 
   const getPlaces = async (search) => {
     try {
@@ -40,10 +47,7 @@ export default function Home() {
     getPlaces(search);
   };
 
-  // useEffect(() => {
-  //   getPlaces();
-  // },[]);
-
+  
   return (
     <div className={styles.container}>
       <Head>
@@ -72,52 +76,69 @@ export default function Home() {
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#5dfdcb" />
       </Head>
-      <main className={styles.main}>
-        <h1 className={styles.title}>City Sounds</h1>
+      <AnimatePresence>
+        <main className={styles.main}>
+          <h1 className={styles.title}>City Sounds</h1>
 
-        <p className={styles.description}>
-          Find and support your local music stores and venues
-        </p>
+          <p className={styles.description}>
+            Find and support your local music stores and venues
+          </p>
 
-        <form className={styles.searchForm} onSubmit={handleSubmit}>
-          <label>
-            <input
-              type="text"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className={styles.searchBar}
-            />
-          </label>
+          <form className={styles.searchForm} onSubmit={handleSubmit}>
+            <label>
+              <input
+                type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className={styles.searchBar}
+              />
+            </label>
 
-          <button type="submit">
-            <Image
-              src={SearchIcon}
-              alt="A rectangular magnifying glass that serves as a search button"
-              height="30px"
-            />
-          </button>
-        </form>
-        <ul className={styles.places}>
-          {placeList &&
-            placeList.map((place) => {
-              return (
-                <Place
-                  key={place.id}
-                  place={place.poi.name}
-                  address={place.address.freeformAddress}
-                  website={place.poi.url}
-                  id={place.id}
-                />
-              );
-            })}
-        </ul>
-        <div>
-          <button>Next</button>
-          <button>Previous</button>
-        </div>
+            <button type="submit">
+              <Image
+                src={SearchIcon}
+                alt="A rectangular magnifying glass that serves as a search button"
+                height="30px"
+              />
+            </button>
+          </form>
+          <motion.ul 
+          className={styles.places}
+          animate={{x: `${page}vw`}}
+          >
+            {placeList &&
+              placeList.map((place) => {
+                return (
+                  <Place
+                    key={place.id}
+                    place={place.poi.name}
+                    address={place.address.freeformAddress}
+                    website={place.poi.url}
+                    id={place.id}
+                  />
+                );
+              })}
+          </motion.ul>
+          <motion.div>
+            {
+              page < 0 &&
+              <motion.button onClick={() => {
+                setPage(page + 90)
+                console.log(page)
+              }}>Previous</motion.button>
+            }
+            {
+              page > -270 &&
+              <motion.button onClick={() => {
+                setPage(page - 90)
+                console.log(page)
+              }}>Next</motion.button>
+            }
+          </motion.div>
 
-        <footer className={styles.footer}></footer>
-      </main>
+          <footer className={styles.footer}></footer>
+        </main>
+        </AnimatePresence>
     </div>
   );
 }
