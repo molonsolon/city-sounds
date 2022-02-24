@@ -12,8 +12,8 @@ export const Nav = () => {
           <Image
             src={Logo}
             alt="A music note stylized to look like a C and an S"
-            height="45%"
-            width="45%"
+            height="70%"
+            width="70%"
           />
         </Link>
       </figure>
