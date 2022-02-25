@@ -11,6 +11,8 @@ import QuarterNoteUp from "../public/quarter-note-up.svg";
 import QuarterNoteDown from "../public/quarter-note-down.svg";
 import FlowerRight from "../public/sunflower-right.svg";
 import FlowerLeft from "../public/sunflower-left.svg";
+import NextButton from '../public/forward-arrow.svg'
+import BackButton from '../public/back-arrow.svg'
 
 export default function Home() {
   const [search, setSearch] = useState("");
@@ -42,6 +44,7 @@ export default function Home() {
       );
       const places = await res2.json();
       setPlaceList(places.results);
+      
     } catch (e) {
       console.error(e);
     }
@@ -202,7 +205,7 @@ export default function Home() {
                 console.log(page);
               }}
             >
-              Previous
+              <Image src={BackButton} alt="An arrow pointing left" height="50px" />
             </motion.button>
           )}
           {page > -270 && (
@@ -212,7 +215,7 @@ export default function Home() {
                 console.log(page);
               }}
             >
-              Next
+              <Image src={NextButton} alt="An arrow pointing right" height="50px"/>
             </motion.button>
           )}
         </motion.div>

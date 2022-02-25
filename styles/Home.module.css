@@ -241,6 +241,7 @@
   width: 100%;
   height: auto;
   justify-content: center;
+  gap: 75px;
   
 }
 .pageButtons > button{
@@ -250,5 +251,9 @@
 	padding: 0;
 	font: inherit;
 	cursor: pointer;
+  z-index: 1;
 	outline: inherit;
+  width: 100px;
+  height: auto;
+  background: black;
 }
