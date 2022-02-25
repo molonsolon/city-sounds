@@ -17,8 +17,18 @@ import BackButton from '../public/back-arrow.svg'
 export default function Home() {
   const [search, setSearch] = useState("");
   const [placeList, setPlaceList] = useState([]);
+  const [resultArray, setResultArray] = useState([])
   const [page, setPage] = useState(0);
 
+  const splitResults = (array) =>{
+    const pageOne = array.splice(0, 10);
+    const pageTwo = array.splice(0,10);
+    const pageThree = array.splice(0,10);
+    const pageFour = array.splice(0,10);
+    const pageFive = array.splice(0,10);
+    const arrOfArrs = [pageOne, pageTwo, pageThree, pageFour, pageFive]
+    return arrOfArrs
+  }
   // i  need to build a page function that will slide the places container
   // to the left, resulting in the first column sliding off screen to the left.
   // this will need to be triggered with buttons places on
@@ -44,7 +54,8 @@ export default function Home() {
       );
       const places = await res2.json();
       setPlaceList(places.results);
-      
+      console.log(places.results)
+      setResultArray(splitResults(places.results))
     } catch (e) {
       console.error(e);
     }
@@ -183,35 +194,37 @@ export default function Home() {
             />
           </button>
         </form>
-        <motion.ul className={styles.places} animate={{ x: `${page}vw` }}>
-          {placeList &&
-            placeList.map((place) => {
-              return (
-                <Place
-                  key={place.id}
-                  place={place.poi.name}
-                  address={place.address.freeformAddress}
-                  website={place.poi.url}
-                  id={place.id}
-                />
-              );
-            })}
-        </motion.ul>
+        <section className={styles.placesContainer}>
+          <motion.ul className={styles.places} animate={{ x: `${page}%` }}>
+            {resultArray &&
+              resultArray[page]?.map((place) => {
+                return (
+                  <Place
+                    key={place.id}
+                    place={place.poi.name}
+                    address={place.address.freeformAddress}
+                    website={place.poi.url}
+                    id={place.id}
+                  />
+                );
+              })}
+          </motion.ul>
+        </section>
         <motion.div className={styles.pageButtons}>
-          {page < 0 && (
+          {page >= 1 && (
             <motion.button
               onClick={() => {
-                setPage(page + 90);
+                setPage(page -1);
                 console.log(page);
               }}
             >
               <Image src={BackButton} alt="An arrow pointing left" height="50px" />
             </motion.button>
           )}
-          {page > -270 && (
+          {page < 4 && (
             <motion.button
               onClick={() => {
-                setPage(page - 90);
+                setPage(page + 1);
                 console.log(page);
               }}
             >
