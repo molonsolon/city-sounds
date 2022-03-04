@@ -9,16 +9,16 @@ export const Nav = () => {
     <nav className={styles.navBar}>
       <figure className={styles.logo}>
         <Link href="/" passHref>
-          <Image
+          <a><Image
             src={Logo}
             alt="A music note stylized to look like a C and an S"
             height="70%"
             width="70%"
-          />
+          /></a>
         </Link>
       </figure>
       <ul className={styles.links}>
-        <Link href="/about">
+        <Link href="/about" passHref>
           <a>About</a>
         </Link>
       </ul>

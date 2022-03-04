@@ -4,12 +4,11 @@
 
 }
 .article {
-  min-height: 30vh;
+  height: auto;
   color: white;
   padding: 1.1rem;
-  width: 64vw;
+  width: 80%;
   background: hsla(358, 99%, 71%, 1);
-
   background: linear-gradient(
    40deg,
     hsla(358, 99%, 71%, 1) 0%,

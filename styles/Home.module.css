@@ -32,7 +32,7 @@
 .main {
   display: grid;
   height: auto;
-  width: 100%;
+  width: inherit;
   grid-auto-rows: min-content;
   align-items: center;
   justify-content: center;
@@ -40,10 +40,9 @@
 }
 .header {
   height: 133vh;
-  width: 150%;
+  width: 100%;
   padding-top: 5vh;
   margin-top: 0;
-  margin-left: -25%;
   margin-bottom: 20vh;
   display: flex;
   flex-direction: column;
@@ -70,7 +69,7 @@
   justify-content: center;
   border: solid 10px rgba(255, 230, 0, 0.158);
   margin: auto;
-  height: 55vh;
+  height: 500px;
   background: hsla(260, 75%, 95%, 1);
   background: radial-gradient(
     circle,
@@ -87,7 +86,7 @@
     hsl(0, 0%, 100%) 40%,
     rgb(252, 171, 174) 100%
   );
-  width: 55vh;
+  width: 500px;
   /* background: rgba(255, 255, 255, 0.644); */
   border-radius: 100%;
   font-size: 7rem;
@@ -107,18 +106,13 @@
   color: black;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
-  background: linear-gradient(
-    0deg,
-     hsla(358, 99%, 71%, 1) 0%,
-     white 90%
-   );
+  background: linear-gradient(0deg, hsla(358, 99%, 71%, 1) 0%, white 90%);
   height: 50vh;
 }
 
 .musicNotes {
   position: relative;
   z-index: 1;
-
 }
 
 .eigthNotes {
@@ -143,12 +137,10 @@
   width: 100px;
   top: -700px;
   right: 250px;
-
 }
 
 .flowerContainer {
   position: relative;
-  
 }
 
 .flowerRight {
@@ -164,7 +156,7 @@
   height: auto;
   width: 350px;
   top: -800px;
-  right:475px;
+  right: 475px;
 }
 
 .searchForm {
@@ -177,12 +169,8 @@
   padding-bottom: 15vh;
   display: flex;
   justify-content: center;
-  background: linear-gradient(
-    180deg,
-     hsla(358, 99%, 71%, 1) 0%,
-     #2b2d42 90%
-   );
-   box-shadow: 0 4px 4px #222435;
+  background: linear-gradient(180deg, hsla(358, 99%, 71%, 1) 0%, #2b2d42 90%);
+  box-shadow: 0 4px 4px #222435;
 }
 
 .searchForm > button:focus {
@@ -215,45 +203,42 @@
 .searchBar:focus {
   outline-style: none !important;
   border: solid #fe6d73 1px;
-    box-shadow: 0 1px 2px white;
-
+  box-shadow: 0 1px 2px white;
 }
 
+.placesContainer {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  
+}
 .places {
-  margin-right: -235vw;
-  height: auto;
-  width: auto;
-  display: grid;
-  column-gap: 60vw;
-  row-gap: 5vh;
-  margin-top: 8vh;
-  grid-template-rows: repeat(20, auto);
-  padding: 3rem;
-  grid-template-columns: 30vw 30vw 30vw 30vw;
-  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
 }
 
 .pageButtons {
   display: flex;
-  margin-top: -50vh;
+  
   flex-direction: row;
   gap: 1rem;
   width: 100%;
-  height: auto;
+  height: 20vh;
   justify-content: center;
-  gap: 75px;
-  
+  align-items: center;
+  gap: 4vw;
 }
-.pageButtons > button{
+.pageButtons > button {
   background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
   z-index: 1;
-	outline: inherit;
+  outline: inherit;
   width: 100px;
-  height: auto;
+  height: 50px;
   background: black;
 }
